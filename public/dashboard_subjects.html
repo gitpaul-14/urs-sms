@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="flex h-screen w-full bg-gray-50 dark:bg-gray-900 overflow-hidden">
+    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center justify-start rtl:justify-end">
+            <!-- Sidebar Toggle Button -->
+            <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" 
+                class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                <span class="sr-only">Open sidebar</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+                </svg>
+            </button>
+            
+            <!-- Logo and Title -->
+            <a href="https://flowbite.com" class="flex ms-2 md:me-24">
+                <img src="img/univ-seal.png" class="h-8 me-3" alt="FlowBite Logo" />
+                <!-- Title is hidden on mobile (sm) but visible on larger screens -->
+                <span class="hidden sm:block self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                    Student Management System
+                </span>
+            </a>
+            </div>
+
+            <div class="flex items-center">
+                <div class="flex items-center ms-3">
+                    <div>
+                        <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                        <span class="sr-only">Open user menu</span>
+                        <img class="w-8 h-8 rounded-full" src="img/c.jpg" alt="user photo">
+                        </button>
+                    </div>
+                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+                        <div class="p-2">
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input 
+                                type="checkbox" 
+                                id="darkModeToggle" 
+                                class="sr-only peer"
+                                >
+                                <span class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Dark Mode: </span>
+                                <div 
+                                class="mx-2 relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="px-4 py-3" role="none">
+                        <p class="text-sm text-gray-900 dark:text-white" role="none">
+                            Name
+                        </p>
+                        <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                            Gmail
+                        </p>
+                        </div>
+                        <ul class="py-1" role="none">
+                        <li>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+            <ul class="space-y-2 font-medium">
+            <li>
+                <a href="#" class="flex items-center p-2 text-blue-600 font-semibold rounded-lg dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 w-5 h-5 text-blue-500 transition duration-75 dark:text-blue-500 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z"></path>
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
+                    <!--<span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="reports_dashboard.html" class="flex items-center p-2 text-gray-500 rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="w-5 h-5 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M3 3.5A1.5 1.5 0 0 1 4.5 2h6.879a1.5 1.5 0 0 1 1.06.44l4.122 4.12A1.5 1.5 0 0 1 17 7.622V16.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 16.5v-13ZM13.25 9a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5a.75.75 0 0 1 .75-.75Zm-6.5 4a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-1.5 0v-.5a.75.75 0 0 1 .75-.75Zm4-1.25a.75.75 0 0 0-1.5 0v2.5a.75.75 0 0 0 1.5 0v-2.5Z"></path>
+                    </svg>
+                    <span class="ms-3">Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M8.34 1.804A1 1 0 0 1 9.32 1h1.36a1 1 0 0 1 .98.804l.295 1.473c.497.144.971.342 1.416.587l1.25-.834a1 1 0 0 1 1.262.125l.962.962a1 1 0 0 1 .125 1.262l-.834 1.25c.245.445.443.919.587 1.416l1.473.294a1 1 0 0 1 .804.98v1.361a1 1 0 0 1-.804.98l-1.473.295a6.95 6.95 0 0 1-.587 1.416l.834 1.25a1 1 0 0 1-.125 1.262l-.962.962a1 1 0 0 1-1.262.125l-1.25-.834a6.953 6.953 0 0 1-1.416.587l-.294 1.473a1 1 0 0 1-.98.804H9.32a1 1 0 0 1-.98-.804l-.295-1.473a6.957 6.957 0 0 1-1.416-.587l-1.25.834a1 1 0 0 1-1.262-.125l-.962-.962a1 1 0 0 1-.125-1.262l.834-1.25a6.957 6.957 0 0 1-.587-1.416l-1.473-.294A1 1 0 0 1 1 10.68V9.32a1 1 0 0 1 .804-.98l1.473-.295c.144-.497.342-.971.587-1.416l-.834-1.25a1 1 0 0 1 .125-1.262l.962-.962A1 1 0 0 1 5.38 3.03l1.25.834a6.957 6.957 0 0 1 1.416-.587l.294-1.473ZM13 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Settings</span>
+                    <!--<span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>-->
+                </a>
+            </li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="h-full w-full overflow-y-auto">
+        <div class="container px-5 mx-auto grid">
+            <div class="p-3 sm:ml-64 dark:bg-gray-900 mt-10">
+                <div class="m-5 space-y-2 lg:grid lg:grid-cols-1 xl:grid-cols-2 gap-3">
+                    <!-- Dashboard Overview Card -->
+                    <div class="col-span-2 p-4 bg-white rounded-lg shadow-md dark:bg-gray-800 md:mb-3">
+                        <nav class="flex" aria-label="Breadcrumb">
+                            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                                <li class="inline-flex items-center">
+                                <a href="dashboard.html" class="inline-flex items-center text-xl font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                                    <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+                                    </svg>
+                                    Home
+                                </a>
+                                </li>
+                                <li>
+                                <!--<div class="flex items-center">
+                                    <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                                    </svg>
+                                    <a href="#" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Subjects</a>
+                                </div>
+                                </li>-->
+                                <li aria-current="page">
+                                <div class="flex items-center">
+                                    <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                                    </svg>
+                                    <span class="ms-1 text-xl font-medium text-gray-500 md:ms-2 dark:text-gray-400">Subjects</span>
+                                </div>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+
+                    <div class="col-span-1 p-2">
+                        <h2 class="my-2 text-md font-semibold text-gray-700 dark:text-gray-200">BS in Information Technology</h2>
+                    </div>
+
+                    <div class="col-span-2 flex justify-end space-x-4">
+                        <!-- 1st Dropdown Button: Subject -->
+                        <div class="relative inline-block text-left">
+                            <div>
+                                <button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-900 dark:text-gray-100 dark:ring-gray-700 dark:hover:bg-gray-700" id="menu-button-subject" aria-expanded="false" aria-haspopup="true" onclick="toggleDropdown('subject')">
+                                    Subject
+                                    <svg class="-mr-1 h-4 w-4 text-gray-400 dark:text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        
+                            <div id="dropdown-subject" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none hidden dark:bg-gray-900 dark:divide-gray-700" role="menu" aria-orientation="vertical" aria-labelledby="menu-button-subject" tabindex="-1">
+                                <div class="py-1" role="none">
+                                    <a href="#" class="block px-4 py-2 text-xs text-gray-700 dark:text-gray-300" role="menuitem" tabindex="-1" id="menu-item-0">ITE7</a>
+                                    <a href="#" class="block px-4 py-2 text-xs text-gray-700 dark:text-gray-300" role="menuitem" tabindex="-1" id="menu-item-1">IT8</a>
+                                    <a href="#" class="block px-4 py-2 text-xs text-gray-700 dark:text-gray-300" role="menuitem" tabindex="-1" id="menu-item-2">IT9</a>
+                                    <a href="#" class="block px-4 py-2 text-xs text-gray-700 dark:text-gray-300" role="menuitem" tabindex="-1" id="menu-item-3">Capstone 1</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- 2nd Dropdown Button: Section -->
+                        <div class="relative inline-block text-left">
+                            <div>
+                                <button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-900 dark:text-gray-100 dark:ring-gray-700 dark:hover:bg-gray-700" id="menu-button-section" aria-expanded="false" aria-haspopup="true" onclick="toggleDropdown('section')">
+                                    Section
+                                    <svg class="-mr-1 h-4 w-4 text-gray-400 dark:text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        
+                            <div id="dropdown-section" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none hidden dark:bg-gray-900 dark:divide-gray-700" role="menu" aria-orientation="vertical" aria-labelledby="menu-button-section" tabindex="-1">
+                                <div class="py-1" role="none">
+                                    <a href="#" class="block px-4 py-2 text-xs text-gray-700 dark:text-gray-300" role="menuitem" tabindex="-1" id="menu-item-0">IT 3-1</a>
+                                    <a href="#" class="block px-4 py-2 text-xs text-gray-700 dark:text-gray-300" role="menuitem" tabindex="-1" id="menu-item-1">IT 3-2</a>
+                                    <a href="#" class="block px-4 py-2 text-xs text-gray-700 dark:text-gray-300" role="menuitem" tabindex="-1" id="menu-item-2">IT 3-3</a>
+                                    <a href="#" class="block px-4 py-2 text-xs text-gray-700 dark:text-gray-300" role="menuitem" tabindex="-1" id="menu-item-3">IT 3-4</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS to open dropdown -->
+                    <script>
+                        function toggleDropdown(dropdownType) {
+                            const dropdown = document.getElementById('dropdown-' + dropdownType);
+                            const isExpanded = dropdown.classList.contains('hidden');
+                            
+                            if (isExpanded) {
+                                dropdown.classList.remove('hidden');
+                                dropdown.classList.add('block');
+                            } else {
+                                dropdown.classList.add('hidden');
+                                dropdown.classList.remove('block');
+                            }
+                        }
+                    </script>
+
+                    <!-- Card 4 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800 h-32 flex items-center justify-center">
+                        <h2 class="font-semibold text-gray-600 dark:text-gray-300 text-center">Attendance</h2>
+                    </div>
+
+                    <!-- Card 1 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800 h-32 flex items-center justify-center">
+                        <h2 class="font-semibold text-gray-600 dark:text-gray-300 text-center">View Groups</h2>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800 h-32 flex items-center justify-center">
+                        <h2 class="font-semibold text-gray-600 dark:text-gray-300 text-center">Exams</h2>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800 h-32 flex items-center justify-center">
+                        <h2 class="font-semibold text-gray-600 dark:text-gray-300 text-center">Portfolio</h2>
+                    </div>
+                    
+                    
+                    <!-- Card 5 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800 h-32 flex items-center justify-center">
+                        <h2 class="font-semibold text-gray-600 dark:text-gray-300 text-center">Grades</h2>
+                    </div>
+                    
+                    <!-- Card 6 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800 h-32 flex items-center justify-center">
+                        <h2 class="font-semibold text-gray-600 dark:text-gray-300 text-center">Student Manual</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    function getRandomStudent() {
+        // Send a request to the PHP file that will return a random student
+        fetch('randomizer.php')
+            .then(response => response.text())
+            .then(data => {
+                // Display the random student's name in the <p> element
+                document.getElementById('randomStudent').textContent = data;
+            })
+            .catch(error => {
+                console.error('Error fetching random student:', error);
+            });
+    }
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script>
+    // Function to enable dark mode
+    const enableDarkMode = () => {
+        document.documentElement.classList.add('dark'); // Add the 'dark' class to HTML
+        localStorage.setItem('darkMode', 'enabled'); // Save the state in localStorage
+    };
+
+    // Function to disable dark mode
+    const disableDarkMode = () => {
+        document.documentElement.classList.remove('dark'); // Remove the 'dark' class from HTML
+        localStorage.setItem('darkMode', 'disabled'); // Save the state in localStorage
+    };
+
+    // Check for saved dark mode preference on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const darkMode = localStorage.getItem('darkMode');
+        const checkbox = document.getElementById('darkModeToggle');
+
+        if (darkMode === 'enabled') {
+        enableDarkMode();
+        checkbox.checked = true; // Set the toggle to ON
+        } else {
+        disableDarkMode();
+        checkbox.checked = false; // Set the toggle to OFF
+        }
+
+        // Add event listener to the toggle
+        checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+        });
+    });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+<?php
+    session_start();
+?>
+
+<!DOCTYPE html>
+
+<html : class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Student Management System</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("image/Login.png");
+        padding: 30px;
+    }
+
+    .container {
+        position: relative;
+        max-width: 850px;
+        width: 100%;
+        background: #fff;
+        padding: 40px 30px;
+        box-shadow: 0 5px 10px 3px rgba(0.5, 0.5, 0.5, 0.5);
+        perspective: 2700px;
+    }
+
+    .container .cover {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: 50%;
+        z-index: 98;
+        transition: all 1s ease;
+        transform-origin: left;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+    }
+
+    .container #flip:checked~.cover {
+        transform: rotateY(-180deg);
+    }
+
+    .container #flip:checked~.forms .login-form {
+        pointer-events: none;
+    }
+
+    .container .cover .front,
+    .container .cover .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .cover .back {
+        transform: rotateY(180deg);
+    }
+
+    .container .cover img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        z-index: 10;
+    }
+
+    .container .cover .text {
+        position: absolute;
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container .cover .text::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: 0.5;
+        background: #7E3AF2;
+    }
+
+    .cover .text .text-1,
+    .cover .text .text-2 {
+        z-index: 20;
+        font-size: 26px;
+        font-weight: 600;
+        color: #fff;
+        text-align: center;
+    }
+
+    .cover .text .text-2 {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .container .forms {
+        height: 100%;
+        width: 100%;
+        background: #fff;
+    }
+
+    .container .form-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .form-content .login-form,
+    .form-content .signup-form {
+        width: calc(100% / 2 - 25px);
+    }
+
+    .forms .form-content .title {
+        position: relative;
+        font-size: 24px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .forms .form-content .title:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 25px;
+        background: #7E3AF2;
+    }
+
+    .forms .signup-form .title:before {
+        width: 20px;
+    }
+
+    .forms .form-content .input-boxes {
+        margin-top: 30px;
+    }
+
+    .forms .form-content .input-box {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        width: 100%;
+        margin: 10px 0;
+        position: relative;
+    }
+
+    .form-content .input-box input {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+        padding: 0 30px;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .form-content .input-box input:focus,
+    .form-content .input-box input:valid {
+        border-color: #7E3AF2;
+    }
+
+    .form-content .input-box i {
+        position: absolute;
+        color: #7E3AF2;
+        font-size: 17px;
+    }
+
+    .forms .form-content .text {
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .forms .form-content .text a {
+        text-decoration: none;
+    }
+
+    .forms .form-content .text a:hover {
+        text-decoration: underline;
+    }
+
+    .forms .form-content .button {
+        color: #fff;
+        margin-top: 40px;
+    }
+
+    .forms .form-content .button input {
+        color: #fff;
+        background: #7E3AF2;
+        border-radius: 6px;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+
+    .forms .form-content .button input:hover {
+        background: #7E3AF2;
+    }
+
+    .forms .form-content label {
+        color: #7E3AF2;
+        cursor: pointer;
+    }
+
+    .forms .form-content label:hover {
+        text-decoration: underline;
+    }
+
+    .forms .form-content .login-text,
+    .forms .form-content .sign-up-text {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .container #flip {
+        display: none;
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .checkbox input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        margin-right: 10px;
+    }
+
+    .checkbox input[type="checkbox"]:checked {
+        background-color: #7E3AF2;
+        border-color: #7E3AF2;
+    }
+
+    .checkbox span {
+        font-size: 13px;
+    }
+
+    @media (max-width: 730px) {
+        .container .cover {
+        display: none;
+        }
+
+        .form-content .login-form,
+        .form-content .signup-form {
+        width: 100%;
+        }
+
+        .form-content .signup-form {
+        display: none;
+        }
+
+        .container #flip:checked~.forms .signup-form {
+        display: block;
+        }
+
+        .container #flip:checked~.forms .login-form {
+        display: none;
+        }
+    }
+    </style>
+</head>
+        
+<body>
+
+        
+    <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+        
+        <div class="front">
+        <img src="img/right_side_login.png" alt="">
+        <div class="text">
+            <span class="text-1">Welcome to <br> Student Management System</span>
+            <span class="text-2">Let's get connected!</span>
+        </div>
+        </div>
+        <div class="back">
+        <img src="img/right_side_login.png" alt="">
+        <div class="text">
+            <span class="text-1">Join the <br> Future of Education</span>
+            <span class="text-2">Let's get started!</span>
+        </div>
+        </div>
+    </div>
+    <div class="forms">
+        <div class="form-content">
+        <div class="login-form">
+            <div class="title">Login</div>
+            <form action="#">
+            <div class="input-boxes">
+                <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" required>
+                </div>
+                <div class="text"><a href="#">Forgot password?</a></div>
+                <div class="button input-box">
+                <input type="button" value="Login" onclick="window.location.href='dashboard.html'">
+                </div>
+                <div class="text"><a href="student/index_student.html">Are you a Student?</a></div>
+                <div class="text sign-up-text">Don't have an account? <label for="flip">Signup now</label></div>
+            </div>
+            </form>
+        </div>
+
+        <div class="signup-form">
+            <div class="title">Signup</div>
+            <form action="registration.php" method="POST">
+            <div class="input-boxes">
+                <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" name="fullname" placeholder="Enter your name" required>
+                </div>
+                <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="confirm" placeholder="Confirm your password" required>
+                </div>
+                <div class="checkbox">
+                <input type="checkbox" name="checkbox_agree">
+                <span>
+                    I have read and agree to the <a href="terms_and_privacy.html" target="_blank">terms of service and
+                    privacy policy</a>.
+                </span>
+                </div>
+                <div class="button input-box">
+                <input type="submit" value="Signup" name="register" for="flip">
+                </div>
+                <div class="text sign-up-text">Already have an account? <label for="flip">Login here</label></div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Footer
+
+    <footer class="footer footer-center bg-base-200 text-base-content rounded p-10">
+        <nav class="grid grid-flow-col gap-4">
+            <a class="link link-hover">About us</a>
+            <a class="link link-hover">Contact</a>
+            <a class="link link-hover">Jobs</a>
+            <a class="link link-hover">Press kit</a>
+        </nav>
+        <nav>
+            <div class="grid grid-flow-col gap-4">
+            <a>
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="fill-current">
+                <path
+                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                </svg>
+            </a>
+            <a>
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="fill-current">
+                <path
+                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                </svg>
+            </a>
+            <a>
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="fill-current">
+                <path
+                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+                </svg>
+            </a>
+            </div>
+        </nav>
+        <aside>
+            <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+        </aside>
+    </footer>-->
+
+
+</body>
+</html>
